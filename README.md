@@ -23,6 +23,14 @@ With that said, we do have two mechanisms in place to help us mitigate the risk 
  - **JWT claims injection**: parameters like user id, or tenant id can be read straight from a signed JWT, that makes impersonating another user pretty much impossible.
  - **Server-side parameters validation**: we're leveraging a JSON schema validation engine to declaratively to restrict the possible values any single input parameter can contain.
 
+## If I'm getting this right, all my SQL queries would be deployed to the client, isn't that the kind of knowledge one would like to keep secret?
+
+Yes, in it's current form it only support SQL signing, but I plan implement support for encrypted queries as well.
+
+## So, you're saying I should move all my business logic to the front end?
+
+No, the scope of this solution is mostly handle basic CRUDs and reporting, you'll still need "regular" endpoints to handle other scenarios.
+
 ## And what about caching, rate limiting, instrumentation and all that stuff? 
 
 You can keep using MemCached, redis, NewRelic and any other tool you already use today, in the end DDAPI is just a set of http handlers and validators that can be wrapped and extended with pretty much anything you want.
@@ -43,7 +51,7 @@ No, not yet, I'm just trying to put the idea out there and gather some feedback 
 
 I believe DDAPI is more concept than tool at this point, the basic idea - to have signed DML and DQL embedded into the frontend - can be implemented in any stach, this implementation is specifically designed to be plugged in Go backends and Javascript (React, Vue, Angular, etc...) frontends though.
 
-## This is crazy man, you're crazy.
+## That's crazy, you're crazy.
 
 Awww, really?! You're so sweet, thank you!
 
