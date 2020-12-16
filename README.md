@@ -51,13 +51,14 @@ No, not yet, I'm just trying to put the idea out there and gather some feedback 
 
 ## Does this work with (insert your preferred tech stack here)?
 
-I believe DDAPI is more concept than tool at this point, the basic idea - to have signed DML and DQL embedded into the frontend - can be implemented in any stach, this implementation is specifically designed to be plugged in Go backends and Javascript (React, Vue, Angular, etc...) frontends though.
+I believe DDAPI is more a concept than a tool at this point, the basic idea - to have signed DML and DQL embedded into the frontend - can be implemented in any stack, but this implementation is specifically designed to be plugged into Go backends and Javascript (React, Vue, Angular, etc...) frontends.
 
 ## That's crazy, you're crazy.
 
-Awww, really?! You're so sweet, thank you!
+Awww... You're so sweet, thank you!
 
 ## Contributing
+
 All pull requests and discussions are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
