@@ -4,6 +4,8 @@ DDAPI is a set of Go http handlers designed to allow SQL (or pretty much any oth
 
 The idea is to be able to safely embed database queries ([DQL](https://en.wikipedia.org/wiki/Data_query_language)) and statements ([DML](https://en.wikipedia.org/wiki/Data_definition_language)) in frontend code.
 
+[Click here](https://github.com/at-silva/ddapi-todo) to check the source code for the TODO app implemented in React, Go and SQLite.
+
 ## But, why?
 
 The goal is to help you build truly flexible backends in a fast and frictionless way. 
