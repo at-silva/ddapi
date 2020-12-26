@@ -22,7 +22,29 @@ type (
 		ParamsSchema          string `json:"paramsSchema"`
 		ParamsSchemaSignature string `json:"paramsSchemaSignature"`
 	}
+	alias request
 )
+
+// UnmarshallJSON custom unmarshaller to allow lazy unmarshalling of ParamsSchema and Params fields
+func (r *request) UnmarshalJSON(data []byte) error {
+	aux := &struct {
+		*alias
+		Params       json.RawMessage `json:"params"`
+		ParamsSchema json.RawMessage `json:"paramsSchema"`
+	}{alias: (*alias)(r)}
+
+	err := json.Unmarshal(data, aux)
+	if err != nil {
+		return err
+	}
+
+	r.SQL = aux.SQL
+	r.SQLSignature = aux.SQLSignature
+	r.Params = string(aux.Params)
+	r.ParamsSchema = string(aux.ParamsSchema)
+	r.ParamsSchemaSignature = aux.ParamsSchemaSignature
+	return nil
+}
 
 func mapBytesToString(s map[string]interface{}) {
 	for k, v := range s {

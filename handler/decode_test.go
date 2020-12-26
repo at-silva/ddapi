@@ -32,8 +32,8 @@ var _ = Describe("DecodeRequest", func() {
 		{
 			"sql": "insert into product(name) values(:name)",
 			"sqlSignature": "valid-sql-signature",
-			"params": "{\"name\": \"Product 1\"}",
-			"paramsSchema": "{\"type\":\"object\", \"required\": [\"name\"], \"properties\": {\"name\": {\"type\": \"string\"}}}",
+			"params": {"name": "Product 1"},
+			"paramsSchema": {"type":"object", "required": ["name"], "properties": {"name": {"type": "string"}}},
 			"paramsSchemaSignature": "valid-params-signature"
 		}`
 
@@ -89,8 +89,8 @@ var _ = Describe("DecodeRequest", func() {
 		{
 			"sql": "insert into product(name) values(:name)",
 			"sqlSignature": "valid-sql-signature",
-			"params": "",
-			"paramsSchema": "{\"type\":\"object\", \"required\": [\"name\"], \"properties\": {\"name\": {\"type\": \"string\"}}}",
+			"params": 12,
+			"paramsSchema": {"type":"object", "required": ["name"], "properties": {"name": {"type": "string"}}},
 			"paramsSchemaSignature": "valid-params-signature"
 		}`
 
@@ -101,7 +101,7 @@ var _ = Describe("DecodeRequest", func() {
 
 		dhandler.ServeHTTP(recorder, r)
 		Expect(recorder.Code).Should(Equal(http.StatusBadRequest))
-		Expect(recorder.Body).Should(MatchJSON(`{"error":"could not unmarshal params: unexpected end of JSON input"}`))
+		Expect(recorder.Body).Should(MatchJSON(`{"error":"could not unmarshal params: json: cannot unmarshal number into Go value of type map[string]interface {}"}`))
 	})
 
 })
