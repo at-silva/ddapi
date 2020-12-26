@@ -23,7 +23,7 @@ type (
 
 // NewQuery returns a new DDApi query handler
 func NewQuery(db db.DB, sc check.SignatureChecker, s session.Reader, pc check.ParamsChecker) http.Handler {
-	h := DecodeRequest(
+	h := DecodeFormRequest(
 		CheckSignatures(sc,
 			ReadSession(s,
 				CheckParams(pc,
