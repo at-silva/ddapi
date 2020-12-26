@@ -26,7 +26,7 @@ type (
 
 // NewExec returns a new DDApi exec handler
 func NewExec(db db.DB, sc check.SignatureChecker, s session.Reader, pc check.ParamsChecker) http.Handler {
-	h := DecodeFormRequest(
+	h := DecodeRequest(
 		CheckSignatures(sc,
 			ReadSession(s,
 				CheckParams(pc,
